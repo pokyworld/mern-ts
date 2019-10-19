@@ -1,0 +1,41 @@
+<div id="newflashhome"></div>
+
+{{#section 'script' }}
+<script>
+    var root = document.getElementById("newflashhome");
+
+    if (Modernizr.video) {
+
+        var video = document.createElement("video");
+        root.appendChild(video);
+        video.loop = true;
+        video.controls = false;
+        video.height = 347;
+        video.width = 765;
+        video.src = "assets/media/eng/splash_YT.mp4";
+        video.load();
+        video.autoplay = true;
+        var playPromise = video.play()
+        if (playPromise !== undefined) {
+            playPromise.then(_ => {
+                // Autoplay started!
+            }).catch(error => {
+                // Autoplay was prevented.
+                if (error.name === "NotAllowedError") video.controls = true;
+            });
+        }
+    } else {
+        root.innerHTML = `
+            <div id="newflashhome">
+                <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,28,0" width="765" height="347">
+                    <param name="movie" value="../images_lang/ita/splash_YT.swf">
+                    <param name="quality" value="high">
+                    <param name="wmode" value="opaque">
+                    <param name="menu" value="false">
+                    <embed src="assets/media/ita/splash_YT.swf" width="765" height="347" quality="high" wmode="opaque" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" menu="false">
+                </object>
+            </div>
+        `;
+    }
+</script>
+{{/section }}

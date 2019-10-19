@@ -1,0 +1,50 @@
+// @import "bulma/bulma.sass";
+
+// Import initial values and functions
+@import "bulma/sass/utilities/initial-variables";
+@import "bulma/sass/utilities/functions";
+
+$tablet: 735px; /* Override to include iPad and larger phones in landscape */
+
+// $blue: #240cac;
+// $teal: #028192;
+// $red: #CC0000;
+// $orange: #f58709f3;
+// $orange-invert: #000;
+// $green: #02832d;
+
+// $primary: $blue;
+// $info: $teal;
+// $danger: $red;
+// $warning: $orange;
+// $warning-invert: $orange-invert;
+// $success: $green;
+
+// Import Derived variables
+@import "bulma/sass/utilities/derived-variables";
+
+// Import the rest of Bulma
+@import "bulma/sass/utilities/_all";
+
+@import "bulma/sass/base/_all";
+@import "bulma/sass/elements/_all";
+// @import "bulma/sass/components/card";
+// @import "bulma/sass/components/media";
+@import "bulma/sass/components/_all";
+@import "bulma/sass/form/_all";
+@import "bulma/sass/grid/_all";
+@import "bulma/sass/layout/_all";
+
+@import "bulma-extensions/bulma-switch/src/sass/index.sass";
+
+.button { margin: 0.5rem; border-radius: 5; border-width: 2px;  }
+.control > .button, .button.is-grouped { margin: 0; }
+.card-footer { padding: 0 1rem 1rem; border: none;}
+.card-footer-item { border: none !important; }
+.card-footer-item > .button > .fa { margin: 1rem; }
+
+.grid-1-2-1 {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+};
+.grid-1-2-1 * {grid-column: 2 / 3;}

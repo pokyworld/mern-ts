@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <!-- <link rel="stylesheet" href="styles/debug.css"> -->
+    <style>
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="googleApi"></div>
+    <div class="spinner-loading-overlay"></div>
+    <div class="login-modal-div" style="display: block;">
+        <div class="modal-content">
+            <div class="close-div"><span class="close">×</span></div>
+            <div class="white-bg center modal-header">
+                <div class="login-register-div">
+                    <input id="tab1" type="radio" name="tabs" checked="">
+                    <label class="tab-label" for="tab1">Sign In</label>
+
+                    <input id="tab2" type="radio" name="tabs">
+                    <label class="tab-label" for="tab2">Sign Up</label>
+
+                    <section id="content1">
+                        <form method="POST" class="login-form" id="Login">
+                            <input type="hidden" name="reqType" value="Login">
+                            <div class="modal-form-group">
+                                <div class="extra"></div>
+                            </div>
+                            <div class="modal-form-group">
+                                <i class="input-icon material-icons">account_circle</i>
+                                <input name="user" id="luser" required="required" type="text" class="modal-form-input"
+                                    placeholder="Username or email">
+                            </div>
+                            <div class="modal-form-group">
+                                <i class="input-icon material-icons">lock</i>
+                                <input name="pass" id="password" type="password" required="required"
+                                    class="modal-form-input" placeholder="Password">
+                            </div>
+                            <div class="modal-form-group left">
+                                <input name="rem" type="hidden" value="false">
+                                <input name="to" type="hidden"
+                                    value="https://auth.geeksforgeeks.org/?to=https://www.geeksforgeeks.org/http-cookies-in-node-js/">
+                                <input name="rem" type="checkbox" checked="">
+                                <label class="modal-form-label" for="remember">Remember me</label>
+                                <a class="pull-right forgot-link">Forgot Password</a>
+                            </div>
+                            <div class="modal-form-group left" style="display:none;">
+                                <div id="loginCaptcha">
+                                    <div style="width: 304px; height: 78px;">
+                                        <div>
+                                            <iframe
+                                                src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LexF0sUAAAAADiQjz9BMiSrqplrItl-tWYDSfWa&amp;co=aHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmc6NDQz&amp;hl=en-GB&amp;v=Zy-zVXWdnDW6AUZkKlojAKGe&amp;size=normal&amp;cb=u4nn0xvxijzv"
+                                                width="304" height="78" role="presentation" name="a-l9yij1zenexa"
+                                                frameborder="0" scrolling="no"
+                                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox">
+                                            </iframe>
+                                        </div>
+                                        <textarea id="g-recaptcha-response-1" name="g-recaptcha-response"
+                                            class="g-recaptcha-response"
+                                            style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none; --darkreader-inline-border-top:#484745; --darkreader-inline-border-right:#484745; --darkreader-inline-border-bottom:#484745; --darkreader-inline-border-left:#484745;"
+                                            data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                            data-darkreader-inline-border-bottom=""
+                                            data-darkreader-inline-border-left=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-green signin-button" type="submit">Sign In</button>
+                        </form>
+                    </section>
+                    <section id="content2">
+                        <form method="POST" class="login-form" id="Register">
+                            <input type="hidden" name="reqType" value="Register">
+                            <div class="modal-form-group">
+                                <div class="extra"></div>
+                            </div>
+                            <div class="modal-form-group">
+                                <i class="input-icon material-icons">email</i>
+                                <input name="email" id="email" type="email" required="required" class="modal-form-input"
+                                    placeholder="E-mail">
+                            </div>
+                            <div class="modal-form-group">
+                                <i class="input-icon material-icons">lock</i>
+                                <input name="pass" id="reg-password" type="password" required="required"
+                                    class="modal-form-input" placeholder="Password">
+                            </div>
+                            <div class="modal-form-group">
+                                <i class="input-icon material-icons">business</i>
+                                <span class="twitter-typeahead"
+                                    style="position: relative; display: inline-block;"><input autocomplete="off"
+                                        type="text" class="modal-form-input typeahead tt-hint" readonly=""
+                                        spellcheck="false" tabindex="-1" dir="ltr"
+                                        style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(36, 37, 37); --darkreader-inline-border-top:transparent; --darkreader-inline-border-right:transparent; --darkreader-inline-border-bottom:transparent; --darkreader-inline-border-left:transparent; --darkreader-inline-boxshadow:none; --darkreader-inline-bgcolor:#2e2f2f; --darkreader-inline-bgimage:none;"
+                                        data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                        data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left=""
+                                        data-darkreader-inline-boxshadow="" data-darkreader-inline-bgcolor=""
+                                        data-darkreader-inline-bgimage=""><input name="institute" id="organization"
+                                        autocomplete="off" required="required" type="text"
+                                        class="modal-form-input typeahead tt-input"
+                                        placeholder="Institution/Organization" spellcheck="false" dir="auto"
+                                        aria-activedescendant="" aria-owns="organization_listbox" role="combobox"
+                                        aria-readonly="true" aria-autocomplete="list"
+                                        style="position: relative; vertical-align: top; background-color: transparent; --darkreader-inline-bgcolor:transparent;"
+                                        data-darkreader-inline-bgcolor=""><span role="status" aria-live="polite"
+                                        style="position: absolute; padding: 0px; border: 0px; height: 1px; width: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; clip: rect(0px, 0px, 0px, 0px); white-space: nowrap; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial;"
+                                        data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                        data-darkreader-inline-border-bottom=""
+                                        data-darkreader-inline-border-left=""></span>
+                                    <pre aria-hidden="true"
+                                        style="position: absolute; visibility: hidden; white-space: pre; font-family: RobotoDraft, Roboto, &quot;Helvetica Neue, Helvetica, Arial&quot;, sans-serif; font-size: 11px; font-style: normal; font-variant: normal; font-weight: 500; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre>
+                                    <div role="listbox" class="tt-menu"
+                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                                        <div role="presentation" class="tt-dataset tt-dataset-0"></div>
+                                    </div></span>
+                            </div>
+                            <div class="modal-form-group">
+                                <div id="registerCaptcha">
+                                    <div style="width: 304px; height: 78px;">
+                                        <div><iframe
+                                                src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LexF0sUAAAAADiQjz9BMiSrqplrItl-tWYDSfWa&amp;co=aHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmc6NDQz&amp;hl=en-GB&amp;v=Zy-zVXWdnDW6AUZkKlojAKGe&amp;size=normal&amp;cb=eno3frbksdss"
+                                                width="304" height="78" role="presentation" name="a-g9e4tskre3h3"
+                                                frameborder="0" scrolling="no"
+                                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                        </div><textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                            class="g-recaptcha-response"
+                                            style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none; --darkreader-inline-border-top:#484745; --darkreader-inline-border-right:#484745; --darkreader-inline-border-bottom:#484745; --darkreader-inline-border-left:#484745;"
+                                            data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                            data-darkreader-inline-border-bottom=""
+                                            data-darkreader-inline-border-left=""></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-green signup-button" type="submit">Sign Up</button>
+                        </form>
+                    </section>
+                    <div class="social-signin-div">
+                        <div class="social-divider">
+                            <span>or</span>
+                        </div>
+                        <div class="google-div social-div pull-left">
+                            <a id="glogin" href="javascript:void(0)" class="btn btn-social btn-google">
+                                <span class="fa fa-google"></span>Google
+                            </a>
+                        </div>
+                        <div class="facebook-div social-div">
+                            <a id="fblogin" class="btn btn-social btn-facebook">
+                                <span class="fa fa-facebook"></span>Facebook
+                            </a>
+                        </div>
+                        <div style="padding: 10px 0px;font-size: 14px;font-weight: 500;padding-top: 20px;"><a
+                                href="https://www.geeksforgeeks.org/why-create-an-account-on-geeksforgeeks/"
+                                style="color: rgb(15, 157, 88); --darkreader-inline-color:#87e7b2;" target="_blank"
+                                data-darkreader-inline-color="">Why Create an Account?</a></div>
+                        <div class="tnc-div">
+                            By creating this account, you agree to our <a
+                                href="https://www.geeksforgeeks.org/privacy-policy/" target="_blank">Privacy Policy</a>
+                            &amp; <a href="https://www.geeksforgeeks.org/cookie-policy/" target="_blank">Cookie
+                                Policy</a>.
+                        </div>
+                    </div>
+                </div>
+                <div class="forgot-div">
+                    <form class="login-form" id="Forgot">
+                        <input type="hidden" name="reqType" value="Forgot">
+                        <div class="modal-form-group">
+                            <div class="extra"></div>
+                        </div>
+                        <div class="modal-form-group">
+                            <p class="left">Please enter your email address or userHandle.</p>
+                        </div>
+                        <div class="modal-form-group">
+                            <i class="input-icon material-icons">account_circle</i>
+                            <input name="user" id="fuser" type="text" class="modal-form-input"
+                                placeholder="Username/Email">
+                        </div>
+                        <div class="modal-form-group">
+                            <div id="forgotCaptcha">
+                                <div style="width: 304px; height: 78px;">
+                                    <div><iframe
+                                            src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LexF0sUAAAAADiQjz9BMiSrqplrItl-tWYDSfWa&amp;co=aHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmc6NDQz&amp;hl=en-GB&amp;v=Zy-zVXWdnDW6AUZkKlojAKGe&amp;size=normal&amp;cb=ksa5hacc4yv0"
+                                            width="304" height="78" role="presentation" name="a-hcvjxo7sanfq"
+                                            frameborder="0" scrolling="no"
+                                            sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                    </div><textarea id="g-recaptcha-response-2" name="g-recaptcha-response"
+                                        class="g-recaptcha-response"
+                                        style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none; --darkreader-inline-border-top:#484745; --darkreader-inline-border-right:#484745; --darkreader-inline-border-bottom:#484745; --darkreader-inline-border-left:#484745;"
+                                        data-darkreader-inline-border-top="" data-darkreader-inline-border-right=""
+                                        data-darkreader-inline-border-bottom=""
+                                        data-darkreader-inline-border-left=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-form-group left">
+                            <a class="login-link">Back to Login</a>
+                        </div>
+                        <button class="btn btn-green center reset-button" type="submit">Reset Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- .section -->
+    <section class="section has-background-light">
+        <div class="container">
+            <div class="columns">
+                <div class="column">
+                    <div class="notification is-info">
+                        <h1>
+                            <p class="is-size-5">
+                                Bulma is a modern CSS framework from @jgthms, based on Flexbox.
+                                Using Bulma, we can describe our website's design using just classes. ᕕ( ᐛ )ᕗ
+                            </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="notification is-primary">
+                        <p class="is-size-5">
+                            Flexbox is a CSS spec that makes sectioning and aligning more natural.
+                            We don't need to know Flexbox but it's how Bulma works behind-the-scenes. ⦤(^ー^)⦥
+                        </p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="notification is-warning">
+                        <p class="is-size-5">
+                            Instead of writing our CSS per-element, we can use predefined classes.
+                            With enough classes, we can describe our website design using semantics. ٩(^ᴗ^)۶
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.section -->
+
+</body>
+
+</html>

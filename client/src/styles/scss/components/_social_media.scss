@@ -1,0 +1,181 @@
+.button.social-div {
+    width: 160px;
+    padding: 15px 30px;
+    background-color: $link; // default;
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 0;
+    justify-content: space-between;
+    scroll-snap-align: center;
+    scroll-snap-type: y proximity;
+
+    & .label {
+        color: $white;
+    }
+
+    & .icon {
+        color: $white;
+    }
+
+    &.facebook-btn {
+        background-color: $facebook; /* fallback color */
+        background: -moz-linear-gradient(top, $facebook, darken($facebook, 10));
+        background: -ms-linear-gradient(top, $facebook, darken($facebook, 10));
+        background: -webkit-linear-gradient(top, $facebook, darken($facebook, 10));
+        border: 1px solid darken($facebook, 10);
+        text-shadow: 0 -1px -1px darken($facebook, 20);
+        & .icon, .label {
+            color: set-button-text-color($facebook);
+        }
+
+        &:hover {
+            background-color: darken($facebook, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($facebook, 5), darken($facebook, 15));
+            background: -ms-linear-gradient(top, darken($facebook, 5), darken($facebook, 15));
+            background: -webkit-linear-gradient(top, darken($facebook, 5), darken($facebook, 15));
+        }
+    }
+
+    &.twitter-btn {
+        // Blue: #1da1f2 / rgb(29, 161, 242), Dark Grey: #14171a / rgb(20, 23, 26)
+        background-color: $twitter; /* fallback color */
+        background: -moz-linear-gradient(top, $twitter, darken($twitter, 10));
+        background: -ms-linear-gradient(top, $twitter, darken($twitter, 10));
+        background: -webkit-linear-gradient(top, $twitter, darken($twitter, 10));
+        border: 1px solid darken($twitter, 10);
+        text-shadow: 0 -1px -1px darken($twitter, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($twitter);
+        }
+
+        &:hover {
+            background-color: darken($twitter, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($twitter, 5), darken($twitter, 15));
+            background: -ms-linear-gradient(top, darken($twitter, 5), darken($twitter, 15));
+            background: -webkit-linear-gradient(top, darken($twitter, 5), darken($twitter, 15));
+        }
+    }
+
+    &.google-btn {
+        background-color: $googlered; /* fallback color */
+        background: -moz-linear-gradient(top, $googlered, darken($googlered, 10));
+        background: -ms-linear-gradient(top, $googlered, darken($googlered, 10));
+        background: -webkit-linear-gradient(top, $googlered, darken($googlered, 10));
+        border: 1px solid darken($googlered, 10);
+        color: set-button-text-color($googlered);
+        text-shadow: 0 -1px -1px darken($googlered, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($googlered);
+        }
+
+        &:hover {
+            background-color: darken($googlered, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($googlered, 5), darken($googlered, 15));
+            background: -ms-linear-gradient(top, darken($googlered, 5), darken($googlered, 15));
+            background: -webkit-linear-gradient(top, darken($googlered, 5), darken($googlered, 15));
+        }
+    }
+
+    &.snapchat-btn {
+        background-color: $snapchat; /* fallback color */
+        background: -moz-linear-gradient(top, $snapchat, darken($snapchat, 5));
+        background: -ms-linear-gradient(top, $snapchat, darken($snapchat, 5));
+        background: -webkit-linear-gradient(top, $snapchat, darken($snapchat, 5));
+        border: 1px solid darken($snapchat, 5);
+        text-shadow: 0 -1px -1px darken($snapchat, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($snapchat);
+        }
+
+        &:hover {
+            background-color: darken($snapchat, 2); /* fallback color */
+            background: -moz-linear-gradient(top, darken($snapchat, 2), darken($snapchat, 10));
+            background: -ms-linear-gradient(top, darken($snapchat, 2), darken($snapchat, 10));
+            background: -webkit-linear-gradient(top, darken($snapchat, 2), darken($snapchat, 10));
+        }
+    }
+
+    &.linkedin-btn {
+        background-color: $linkedin; /* fallback color */
+        background: -moz-linear-gradient(top, $linkedin, darken($linkedin, 10));
+        background: -ms-linear-gradient(top, $linkedin, darken($linkedin, 10));
+        background: -webkit-linear-gradient(top, $linkedin, darken($linkedin, 10));
+        border: 1px solid darken($linkedin, 10);
+        text-shadow: 0 -1px -1px darken($linkedin, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($linkedin);
+        }
+
+        &:hover {
+            background-color: darken($linkedin, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($linkedin, 5), darken($linkedin, 15));
+            background: -ms-linear-gradient(top, darken($linkedin, 5), darken($linkedin, 15));
+            background: -webkit-linear-gradient(top, darken($linkedin, 5), darken($linkedin, 15));
+        }
+    }
+
+&.pinterest-btn {
+        background-color: $pinterest; /* fallback color */
+        background: -moz-linear-gradient(top, $pinterest, darken($pinterest, 10));
+        background: -ms-linear-gradient(top, $pinterest, darken($pinterest, 10));
+        background: -webkit-linear-gradient(top, $pinterest, darken($pinterest, 10));
+        border: 1px solid darken($pinterest, 10);
+        text-shadow: 0 -1px -1px darken($pinterest, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($pinterest);
+        }
+
+        &:hover {
+            background-color: darken($pinterest, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($pinterest, 5), darken($pinterest, 15));
+            background: -ms-linear-gradient(top, darken($pinterest, 5), darken($pinterest, 15));
+            background: -webkit-linear-gradient(top, darken($pinterest, 5), darken($pinterest, 15));
+        }
+    }
+
+&.whatsapp-btn {
+        background-color: $whatsappgreen; /* fallback color */
+        background: -moz-linear-gradient(top, $whatsappgreen, darken($whatsappgreen, 10));
+        background: -ms-linear-gradient(top, $whatsappgreen, darken($whatsappgreen, 10));
+        background: -webkit-linear-gradient(top, $whatsappgreen, darken($whatsappgreen, 10));
+        border: 1px solid darken($whatsappgreen, 10);
+        text-shadow: 0 -1px -1px darken($whatsappgreen, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($whatsappgreen);
+        }
+
+        &:hover {
+            background-color: darken($whatsappgreen, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($whatsappgreen, 5), darken($whatsappgreen, 15));
+            background: -ms-linear-gradient(top, darken($whatsappgreen, 5), darken($whatsappgreen, 15));
+            background: -webkit-linear-gradient(top, darken($whatsappgreen, 5), darken($whatsappgreen, 15));
+        }
+    }
+
+    &.github-btn {
+        background-color: $github; /* fallback color */
+        background: -moz-linear-gradient(top, $github, darken($github, 10));
+        background: -ms-linear-gradient(top, $github, darken($github, 10));
+        background: -webkit-linear-gradient(top, $github, darken($github, 10));
+        border: 1px solid darken($github, 10);
+        text-shadow: 0 -1px -1px darken($github, 20);
+
+        & .icon, .label {
+            color: set-button-text-color($github);
+        }
+
+        &:hover {
+            background-color: darken($github, 5); /* fallback color */
+            background: -moz-linear-gradient(top, darken($github, 5), darken($github, 15));
+            background: -ms-linear-gradient(top, darken($github, 5), darken($github, 15));
+            background: -webkit-linear-gradient(top, darken($github, 5), darken($github, 15));
+        }
+    }
+
+}

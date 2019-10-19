@@ -1,0 +1,189 @@
+#auth-modal {
+    // & .animated {
+    //     animation-duration: 1.2s;
+    // }
+
+    & .modal-card {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    & .modal-background {
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    & .modal-card-head {
+        padding: 10px 15px;
+    }
+    
+    & .modal-card-foot {
+        padding: 5px 8px 0;
+        display: flex;
+        flex-grow: 1;
+        // flex-shrink: 0;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    & .scrolling-wrapper {
+        display: block;
+        //display: flex;
+        //flex-grow: 1;
+        // flex-shrink: 0;
+        //overflow-x: auto;
+        //overflow-y: hidden;
+
+        & .scroller {
+            overflow-x: scroll;
+            scroll-snap-type: x mandatory;
+            display:flex;
+            -webkit-overflow-scrolling: touch;
+    
+            &::-webkit-scrollbar {
+                display: none;
+                padding-bottom: 0;
+            }
+    
+            & .panel {
+                display: inline-block;
+                width: calc(540px - 5px);
+                max-width: calc(100vw);
+                margin-top: 10px;
+                margin-bottom: 10px;
+                scroll-snap-align: center;
+                scroll-snap-type: y mandatory;
+                background-color: $white;
+                max-height: 405px;
+                overflow: hidden;
+                -webkit-transition: all 1s ease-in-out;
+                transition: all 1s ease-in-out;
+    
+                & .panel-block {
+                    align-items: flex-start;
+                    height: 400px;
+                    margin: 10px;
+                    border-top: 1px solid #dbdbdb;
+                    border-bottom: 1px solid #dbdbdb;
+                    // visibility:visible;
+                    max-height: 1000px;
+                    margin-top: 0;
+                    padding-top: 0;
+                    margin-bottom: 0;
+                    padding-bottom: 0;  
+                    background-color: white;
+                    -webkit-transition: all 1s ease-in-out;
+                    transition: all 1s ease-in-out;
+
+                    &.hidden {
+                        // visibility: hidden;
+                        max-height: 0;
+                        overflow: hidden;
+                        opacity: 0;
+                    }
+    
+                    & form {
+                        padding: 10px 0;
+                        display: flex;
+                        flex-direction: column;
+                        flex-grow: 1;
+                        justify-content: space-around;
+                        height: 400px;
+                        // flex-shrink: 0;
+    
+                        & #register-captcha, #forgot-captcha {
+                            display: flex;
+                            justify-content: center;
+                        }
+
+                        & button.is-text {
+                            text-decoration: none;
+                        }
+
+                        & .progress-wrapper {
+                            margin-top: -20px;
+                            margin-bottom: 20px;
+                        }
+
+                        & .field.is-grouped {
+                            justify-content: space-between;
+                            align-items: center;
+    
+                            & .button {
+                                width: 150px;
+                                padding: 5px 30px;
+                            }
+                        }
+
+                        & .icon {
+                            pointer-events: initial;
+                        }
+
+                        & .password-toggle {
+                            z-index: 20;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+    
+        }
+    }
+
+    & .modal-card-body {
+        padding: 0;
+
+        & .panels {
+            min-height: 500px;
+
+            
+        }
+    
+        & .tabs {
+            margin-bottom: 0;
+
+            & ul {
+    
+                border-bottom-width: 2px;
+                & > .tab {
+                    & a {
+                        border-bottom: none;
+                    
+                        & .subtitle {
+                            text-transform: uppercase;
+                        }
+                    }
+        
+                    &.is-active > a {
+                        border-bottom: 5px solid $link;
+                        & .subtitle {
+                            color: $link;
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+
+    @media screen and (min-width: 735px), print {
+        .modal-content, .modal-card {
+            margin: 0 auto;
+            max-height: calc(100vh - 40px);
+            width: 540px;
+
+            & .panel {
+                min-width: 540px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 734px), print {
+        .modal-card {
+            // height: 100vh;
+
+            & .panel {
+                min-width: calc(100vw);
+            }
+        }
+    }
+}

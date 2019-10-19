@@ -1,0 +1,11 @@
+@function set-button-text-color($color) {  
+    @if (lightness( $color ) > 60) {
+      @return #222222;
+    }
+    @else if ($color == $snapchat) {
+        @return #222222;
+    }
+    @else {
+      @return #efefef;
+    }
+}

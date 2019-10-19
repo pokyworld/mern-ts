@@ -1,0 +1,61 @@
+{
+    "skillGroups": [
+        {
+            "title": "consultancy",
+            "description": "",
+            "skills": []
+        },
+        {
+            "title": "database",
+            "description": "",
+            "skills": []
+        },
+        {
+            "title": "design",
+            "description": "",
+            "skills": []
+        },
+        {
+            "title": "development",
+            "description": "",
+            "skills": [
+                {
+                    "name": "Classic ASP",
+                    "title": "Classic ASP (VBScript/JScript",
+                    "description": "",
+                    "slug": "classic-asp",
+                    "image-url": "",
+                    "keywords": "",
+                    "meta": ""
+                },
+                {
+                    "name": "ASP.NET",
+                    "title": "ASP.NET (C#, VB.NET, MVC, WebAPI)",
+                    "description": "",
+                    "slug": "dotnet",
+                    "image-url": "",
+                    "keywords": "",
+                    "meta": ""
+                },
+                {
+                    "name": "JavaScript",
+                    "title": "JavaScript (vanilla, JQuery, ES6, ES7)",
+                    "description": "",
+                    "slug": "javascript",
+                    "image-url": "",
+                    "keywords": "",
+                    "meta": ""
+                },
+                {
+                    "name": "PHP",
+                    "title": "PHP (including frameworks e.g. Laravel, CakePHP)",
+                    "description": "",
+                    "slug": "php",
+                    "image-url": "",
+                    "keywords": "",
+                    "meta": ""
+                }
+            ]
+        }
+    ]
+}

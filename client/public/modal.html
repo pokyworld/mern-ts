@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.0/css/bulma.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"> -->
+    <link rel="stylesheet" href="css/main.app.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/debug.css">
+
+</head>
+
+<body>
+    <div id="googleApi"></div>
+
+    <div id="main-content" class="section">
+        <div onclick="toggleModal('auth-modal');" class="button is-link" data-toggle="auth-modal">Login</div>
+    </div>
+
+    <div class="spinner-loading-overlay"></div>
+
+    <div id="auth-modal" class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title"></p>
+                <button class="delete" aria-label="close" onclick="toggleModal('auth-modal');"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="tabs is-fullwidth">
+                    <ul id="authTabs">
+                        <li id="authTabLogin" class="tab is-active" onclick="setAuthTab('authTabLogin','auth-modal');">
+                            <a href="#tabOne">
+                                <span class="icon"><i class="fas fa-user" aria-hidden="true"></i></span>
+                                <span class="subtitle is-size-5">Login</span>
+                            </a>
+                        </li>
+                        <li id="authTabRegister" class="tab" onclick="setAuthTab('authTabRegister','auth-modal');">
+                            <a href="#tabTwo">
+                                <span class="icon"><i class="fas fa-user-plus" aria-hidden="true"></i></span>
+                                <span class="subtitle is-size-5">Register</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="scrolling-wrapper">
+                    <div id="authPageScroll" class="scroller">
+                        <div id="tabOne" class="panel">
+
+                            <div id="loginPanel" class="panel-block">
+                                <form id="loginForm">
+
+                                    <div class="field">
+                                        <label class="label">Username or Email</label>
+                                        <div id="login-username" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="text" placeholder="Enter your username or email"
+                                                value="" autocomplete="username" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <span class="icon is-small is-right"></span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Password</label>
+                                        <div id="login-password" class="control has-icons-left has-icons-right"
+                                            usemap="#login-password-map">
+                                            <input class="input" type="password" placeholder="Enter your Password"
+                                                value="" autocomplete="current-password" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                            <span toggle="#login-password"
+                                                class="icon is-small is-right toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <div class="field" style="visibility: hidden;">
+                                        <label class="label">Hidden</label>
+                                        <div id="login-hidden" class="control">
+                                            <input class="input" type="text" value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="field is-grouped">
+                                        <div id="login-remember" class="control">
+                                            <input id="authSwitchRemember" type="checkbox" name="authSwitchRemember"
+                                                class="switch is-rounded is-link">
+                                            <label for="authSwitchRemember">Remember me</label>
+                                        </div>
+                                        <div class="control">
+                                            <button id="authForgotPasswordButton" class="button is-link is-outlined">
+                                                Forgot password&nbsp;
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div id="authLoginSubmitButton" class="control">
+                                            <button class="button is-link is-fullwidth">
+                                                <span class="label has-text-white">LOGIN</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div id="forgotPasswordPanel" class="panel-block hidden">
+                                <form id="forgotForm">
+
+                                    <h3 class="title is-size-5">Reset Password</h3>
+
+                                    <div class="field">
+                                        <label class="label">Registered Email address</label>
+                                        <div id="forgot-email" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="email" placeholder="Enter your registered email"
+                                                value="" autocomplete="current-email" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                            <span class="icon is-small is-right"></span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <div class="field">
+                                        <div id="forgot-captcha">
+                                            <div style="width: 304px; height: 90px;">
+                                                <div><iframe
+                                                        src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LexF0sUAAAAADiQjz9BMiSrqplrItl-tWYDSfWa&amp;co=aHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmc6NDQz&amp;hl=en-GB&amp;v=Zy-zVXWdnDW6AUZkKlojAKGe&amp;size=normal&amp;cb=qzuxqgx23slu"
+                                                        width="304" height="50" role="presentation"
+                                                        name="a-g9e4tskre3h3" frameborder="0" scrolling="no"
+                                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                                </div><textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                                    class="g-recaptcha-response"
+                                                    style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div class="control">
+                                            <button id="authReturnToLoginButton" class="button is-outlined is-link">
+                                                &nbsp;Back
+                                                to
+                                                Login</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div id="forgot-send-email" class="control">
+                                            <button class="button is-link is-fullwidth">
+                                                <span class="label has-text-white">RESET PASSWORD</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                        </div>
+
+                        <div id="tabTwo" class="panel">
+
+                            <div id="registerPanel" class="panel-block">
+
+                                <form id="registerForm">
+
+                                    <div class="field">
+                                        <label class="label">Name</label>
+                                        <div id="register-name" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="text" placeholder="Enter Full Name">
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                            <span class="icon is-small is-right"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Username</label>
+                                        <div id="register-username" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="text" placeholder="Enter unique Username"
+                                                value="">
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-tag"></i>
+                                            </span>
+                                            <span class="icon is-small is-right"></span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <div class="field" style="margin-bottom: 0;">
+                                        <label class="label">Email</label>
+                                        <div id="register-email" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="email" placeholder="Enter your Email address"
+                                                value="">
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-envelope"></i>
+                                            </span>
+                                            <span class="icon is-small is-right"></span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <div class="field" style="margin-bottom: 0;">
+                                        <div id="register-captcha">
+                                            <div style="width: 304px; height: 90px;">
+                                                <div>
+                                                    <iframe
+                                                        src="https://www.google.com/recaptcha/api2/anchor?ar=2&amp;k=6LexF0sUAAAAADiQjz9BMiSrqplrItl-tWYDSfWa&amp;co=aHR0cHM6Ly93d3cuZ2Vla3Nmb3JnZWVrcy5vcmc6NDQz&amp;hl=en-GB&amp;v=Zy-zVXWdnDW6AUZkKlojAKGe&amp;size=normal&amp;cb=qzuxqgx23slu"
+                                                        width="304" height="50" role="presentation"
+                                                        name="a-g9e4tskre3h3" frameborder="0" scrolling="no"
+                                                        sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox">
+                                                    </iframe>
+                                                </div>
+                                                <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                                    class="g-recaptcha-response"
+                                                    style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;">
+                                                </textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="field">
+                                        <div id="authRegisterSubmitButton" class="control">
+                                            <button class="button is-link is-fullwidth">
+                                                <span class="label has-text-white">REGISTER</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+
+                            <div id="setPasswordPanel" class="panel-block hidden">
+                                <!-- <div id="setPassword"> -->
+                                <form id="setPasswordForm">
+
+                                    <h3 class="label is-size-5 is-wrapped">Set a secure password.</h3>
+                                    <div class="field">
+                                        <label class="label">Password</label>
+                                        <div id="register-password" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="password" placeholder="Enter your Password"
+                                                value="" autocomplete="none" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                            <span toggle="#register-password"
+                                                class="icon is-small is-right toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+                                    <div class="field is-grouped" style="margin: -20px 0 0 0;">
+                                        <span class="label is-size-7">Weak</span>
+                                        <span class="label is-size-7">Better</span>
+                                        <span class="label is-size-7">Okay</span>
+                                        <span class="label is-size-7">Stronger</span>
+                                        <span class="label is-size-7">Strong</span>
+                                    </div>
+                                    <!-- progress bar here -->
+                                    <div class="progress-wrapper">
+                                        <!-- <progress class="progress is-small is-danger" value="15" max="100"
+                                            data-help="Weak password"></progress> -->
+                                        <!-- <progress class="progress is-small is-warning" value="30" max="100"
+                                            data-help="Weaker password"></progress> -->
+                                        <progress id="password-strength" class="progress is-small is-info" value="0"
+                                            max="100" data-help="Okay password"></progress>
+                                        <!-- <progress class="progress is-small is-primary" value="80" max="100"
+                                            data-help="Stronger password"></progress> -->
+                                        <!-- <progress class="progress is-small is-success" value="100" max="100"
+                                            data-help="Strong password"></progress> -->
+                                    </div>
+
+                                    <div class="field">
+                                        <label class="label">Repeat Password</label>
+                                        <div id="register-repeat" class="control has-icons-left has-icons-right">
+                                            <input class="input" type="password" placeholder="Re-enter your Password"
+                                                value="" autocomplete="none" required>
+                                            <span class="icon is-small is-left">
+                                                <i class="fas fa-retweet"></i>
+                                            </span>
+                                            <span toggle="#register-repeat"
+                                                class="icon is-small is-right toggle-password">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                        <p class="help"></p>
+                                    </div>
+
+                                    <!-- <div class="field is-grouped"> -->
+                                    <div class="field">
+                                        <!-- <div class="control">
+                                            <button id="authReturnToRegisterButton" class="button is-outlined is-link">
+                                                &nbsp;Back
+                                                to
+                                                Register</button>
+                                        </div> -->
+
+                                        <div class="control">
+                                            <button id="authSetPasswordButton" class="button is-link is-fullwidth">
+                                                CONFIRM
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <!-- </div> -->
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- <div id="authSetPassword"></div> -->
+            </section>
+
+            <footer class="modal-card-foot">
+
+                <p class="label" style="margin: 0;">or login with:</p>
+
+                <div class="scrolling-wrapper">
+                    <div id="authSocialScroll" class="scroller">
+                        <!-- <div class="button social-div facebook-btn">
+                            <i class="fab fa-facebook-f icon"></i>
+                            <span class="label">facebook</span>
+                        </div> -->
+                        <!-- <div class="button social-div google-btn">
+                            <i class="fab fa-google icon"></i>
+                            <span class="label">google</span>
+                        </div> -->
+                        <!-- <div class="button social-div twitter-btn">
+                            <i class="fab fa-twitter icon"></i>
+                            <span class="label">twitter</span>
+                        </div> -->
+                        <div class="button social-div linkedin-btn">
+                            <i class="fab fa-linkedin-in icon"></i>
+                            <span class="label">linkedIn</span>
+                        </div>
+                        <div class="button social-div snapchat-btn">
+                            <i class="fab fa-snapchat icon"></i>
+                            <span class="label">snapchat</span>
+                        </div>
+                        <div class="button social-div pinterest-btn">
+                            <i class="fab fa-pinterest icon"></i>
+                            <span class="label">pinterest</span>
+                        </div>
+                        <div class="button social-div whatsapp-btn">
+                            <i class="fab fa-whatsapp icon"></i>
+                            <span class="label">whatsapp</span>
+                        </div>
+                        <div class="button social-div github-btn">
+                            <i class="fab fa-github-alt icon"></i>
+                            <span class="label">github</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="is-size-7 has-text-centered" style="padding: 3px 40px 8px; line-height: 1;">
+                    By creating this account, you agree to our <a href="#privacy" target="_blank">Privacy Policy</a>
+                    &amp; <a href="#cookies" target="_blank">Cookie Policy</a>.
+                </div>
+
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- <script src="scripts/vendor.app.js"></script> -->
+    <!-- <script src="scripts/main.app.js"></script> -->
+    <script src="scripts/passwordScore.js"></script>
+    <script src="scripts/_auth_modal.js"></script>
+    <script>
+
+        // const score = passwordScore("d3sm0ndb");
+        // console.log("Score: ", score);
+
+        /* debug.css | MIT License | zaydek.github.com/debug.css */
+        // if (!("is_debugging" in window)) { is_debugging = false; var debug_el = document.createElement("style"); debug_el.append(document.createTextNode(`*:not(g):not(path) { color: hsla(210, 100%, 100%, 0.9) !important; background: hsla(210, 100%,  50%, 0.5) !important; outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important; box-shadow: none !important; filter: none !important; }`)); } function enable_debugger() { if (!is_debugging) { document.head.appendChild(debug_el); is_debugging = true; } } function disable_debugger() { if (is_debugging) { document.head.removeChild(debug_el); is_debugging = false; } } !is_debugging ? enable_debugger() : disable_debugger();
+    </script>
+</body>
+
+</html>

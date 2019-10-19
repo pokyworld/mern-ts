@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        // "strict": true,
+        // "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+        // "noEmit": true,
+        "noEmitOnError": true,
+        "jsx": "react",
+        "sourceMap": true,
+        "outDir": "dist",
+        "baseUrl": ".",
+        // "paths": {
+        //     "*": ["node_modules/*", "src/typescript/*"]
+        // },
+        "removeComments": true
+    },
+    "include": ["index.tsx", "src/**/*", "serviceWorker.js"],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "build",
+        "src/typescript/*",
+        "**/*.spec.ts"
+    ]
+}
