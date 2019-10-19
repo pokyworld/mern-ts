@@ -10,7 +10,7 @@
     "author": "Des Butler",
     "license": "ISC",
     "dependencies": {
-        "concurrently": "^4.1.2"
+        "concurrently": "^5.0.0"
     },
     "devDependencies": {}
 }
